@@ -1,0 +1,314 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://Scripts/Main.gd" type="Script" id=1]
+[ext_resource path="res://assets/pixel.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/BossHealthBar.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/FORCED SQUARE.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/AldotheApache.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://Scenes/Pivot.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Bullet.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scripts/SpawnManager.gd" type="Script" id=9]
+[ext_resource path="res://Spawners/BasicSpawner.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/Enemy1.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scenes/Enemy2.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scenes/DashBoss.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Scripts/Camera.gd" type="Script" id=14]
+[ext_resource path="res://Scenes/Joystick.tscn" type="PackedScene" id=15]
+
+[sub_resource type="DynamicFont" id=1]
+
+size = 194
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 4 )
+_sections_unfolded = [ "Font", "Resource", "Settings" ]
+
+[sub_resource type="DynamicFont" id=2]
+
+size = 80
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 4 )
+_sections_unfolded = [ "Font", "Resource", "Settings" ]
+
+[sub_resource type="DynamicFont" id=3]
+
+size = 128
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 5 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=4]
+
+size = 128
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 5 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
+
+[node name="Main" type="Node" index="0"]
+
+script = ExtResource( 1 )
+
+[node name="BackgroundImage" type="Sprite" parent="." index="0"]
+
+modulate = Color( 0.423529, 0.678431, 0.921569, 1 )
+position = Vector2( -78.1886, -43.1211 )
+scale = Vector2( 1183.28, 666.474 )
+z_index = -4096
+texture = ExtResource( 2 )
+centered = false
+_sections_unfolded = [ "Offset", "Transform", "Visibility", "Z Index" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BossHealthBar" parent="." index="1" instance=ExtResource( 3 )]
+
+visible = false
+position = Vector2( 512, 288 )
+
+[node name="GUI" type="Control" parent="." index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Focus", "Hint", "Material", "Rect", "Visibility" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CenterText" type="Label" parent="GUI" index="0"]
+
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -166.0
+margin_top = -72.0
+margin_right = 187.0
+margin_bottom = 89.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.643137, 0.576471, 0.878431, 1 )
+text = "0"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Visibility", "custom_colors", "custom_fonts" ]
+
+[node name="BossMessage" type="Label" parent="GUI" index="1"]
+
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -539.0
+margin_top = -307.0
+margin_right = 539.0
+margin_bottom = 306.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.643137, 0.576471, 0.878431, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "LARGE ENTITY APPROACHING"
+align = 1
+valign = 1
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Visibility", "custom_colors", "custom_fonts" ]
+
+[node name="DeathGUI" type="MarginContainer" parent="GUI" index="2"]
+
+editor/display_folded = true
+visible = false
+anchor_left = 0.5
+anchor_top = 0.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -284.0
+margin_right = 284.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_constants/margin_top = 100
+_sections_unfolded = [ "Theme", "Visibility", "custom_constants" ]
+
+[node name="VBox" type="VBoxContainer" parent="GUI/DeathGUI" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 8.0
+margin_top = 100.0
+margin_right = 568.0
+margin_bottom = 576.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_constants/separation = 150
+alignment = 0
+_sections_unfolded = [ "custom_constants" ]
+
+[node name="DeathText" type="Label" parent="GUI/DeathGUI/VBox" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 560.0
+margin_bottom = 107.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 3 )
+text = "Score: "
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Hint", "custom_fonts" ]
+
+[node name="PlayAgain" type="Button" parent="GUI/DeathGUI/VBox" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 257.0
+margin_right = 560.0
+margin_bottom = 370.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 4 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Play Again"
+flat = true
+align = 1
+_sections_unfolded = [ "Margin", "custom_fonts" ]
+
+[node name="Pivot" parent="." index="3" instance=ExtResource( 6 )]
+
+position = Vector2( 512, 288 )
+scale = Vector2( 0.15, 0.15 )
+
+[node name="Player" parent="." index="4" instance=ExtResource( 7 )]
+
+position = Vector2( 746.658, 192.824 )
+_sections_unfolded = [ "Audio Bus", "Collision", "Material", "Transform", "Visibility", "Z Index" ]
+Bullet = ExtResource( 8 )
+
+[node name="SpawnManager" type="Node" parent="." index="5"]
+
+script = ExtResource( 9 )
+
+[node name="BasicSpawner" parent="SpawnManager" index="0" instance=ExtResource( 10 )]
+
+Enemy = ExtResource( 11 )
+spawn_time = 1.0
+auto_start = true
+
+[node name="BasicSpawner2" parent="SpawnManager" index="1" instance=ExtResource( 10 )]
+
+Enemy = ExtResource( 12 )
+auto_start = true
+
+[node name="BossSpawner" parent="SpawnManager" index="2" groups=[
+"boss_spawners",
+] instance=ExtResource( 10 )]
+
+Enemy = ExtResource( 13 )
+one_shot = true
+
+[node name="Camera" type="Camera2D" parent="." index="6"]
+
+offset = Vector2( 512, 288 )
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = false
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = false
+smoothing_speed = 5.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.2
+drag_margin_top = 0.2
+drag_margin_right = 0.2
+drag_margin_bottom = 0.2
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+script = ExtResource( 14 )
+
+[node name="Joystick" parent="." index="7" instance=ExtResource( 15 )]
+
+[node name="BossMessageTimer" type="Timer" parent="." index="8"]
+
+process_mode = 1
+wait_time = 3.0
+one_shot = true
+autostart = false
+
+[node name="BlinkTimer" type="Timer" parent="." index="9"]
+
+process_mode = 1
+wait_time = 0.35
+one_shot = false
+autostart = false
+
+[connection signal="pressed" from="GUI/DeathGUI/VBox/PlayAgain" to="." method="_on_PlayAgain_pressed"]
+
+[connection signal="died" from="Player" to="." method="_on_Player_died"]
+
+[connection signal="enemy_created" from="SpawnManager/BasicSpawner" to="." method="_on_BasicSpawner_enemy_created"]
+
+[connection signal="enemy_created" from="SpawnManager/BasicSpawner2" to="." method="_on_BasicSpawner_enemy_created"]
+
+[connection signal="enemy_created" from="SpawnManager/BossSpawner" to="." method="_on_BasicSpawner_enemy_created"]
+
+[connection signal="timeout" from="BossMessageTimer" to="." method="_on_BossMessageTimer_timeout"]
+
+[connection signal="timeout" from="BlinkTimer" to="." method="_on_BlinkTimer_timeout"]
+
+

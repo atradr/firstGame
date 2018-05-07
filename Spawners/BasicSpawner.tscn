@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/BasicSpawner.gd" type="Script" id=1]
+
+[node name="BasicSpawner" type="Node"]
+
+script = ExtResource( 1 )
+Enemy = null
+spawn_time = 2
+one_shot = false
+auto_start = false
+
+[node name="SpawnTimer" type="Timer" parent="." index="0"]
+
+process_mode = 1
+wait_time = 2.0
+one_shot = false
+autostart = false
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
+
+

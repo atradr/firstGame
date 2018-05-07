@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/Joystick.gd" type="Script" id=1]
+[ext_resource path="res://assets/pixel.png" type="Texture" id=2]
+[ext_resource path="res://assets/circle.png" type="Texture" id=3]
+
+[node name="Joystick" type="Position2D"]
+
+script = ExtResource( 1 )
+
+[node name="Base" type="Sprite" parent="." index="0"]
+
+scale = Vector2( 20, 20 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Animation", "Offset", "Region", "Transform", "Z Index" ]
+
+[node name="Stick" type="Sprite" parent="." index="1"]
+
+scale = Vector2( 3, 1 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
+
+[node name="Circle" type="Sprite" parent="." index="2"]
+
+scale = Vector2( 64, 64 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Material", "Offset", "Transform", "Visibility", "Z Index" ]
+
+[node name="Location" type="Position2D" parent="." index="3"]
+
+[node name="Outline" type="Sprite" parent="." index="4"]
+
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Transform" ]
+
+
