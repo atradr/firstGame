@@ -24,3 +24,6 @@ func start():
 
 func stop():
 	$SpawnTimer.stop()
+	
+func set_enemy(enemy):
+	Enemy = enemy

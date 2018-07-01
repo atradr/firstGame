@@ -6,25 +6,25 @@
 [node name="BossHealthBar" type="Node2D"]
 
 script = ExtResource( 1 )
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="Outline" type="Sprite" parent="." index="0"]
 
-modulate = Color( 0.639216, 0.576471, 0.87451, 1 )
+modulate = Color( 0.27451, 0.576471, 0.87451, 1 )
 scale = Vector2( 480, 64 )
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 
 [node name="Background" type="Sprite" parent="." index="1"]
 
-modulate = Color( 0.419608, 0.67451, 0.921569, 1 )
+modulate = Color( 0.27451, 0.67451, 0.921569, 1 )
 scale = Vector2( 475, 59 )
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="Progress" type="Sprite" parent="." index="2"]
 
-modulate = Color( 0.639216, 0.576471, 0.87451, 1 )
+modulate = Color( 0.27451, 0.576471, 0.87451, 1 )
 scale = Vector2( 475, 59 )
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Material", "Transform", "Visibility" ]

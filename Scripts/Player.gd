@@ -3,7 +3,7 @@ extends Area2D
 export (PackedScene) var Bullet
 export var SPEED = 500
 
-onready var pivot = $"/root/Main/Pivot"
+onready var pivot = $"../Pivot"
 onready var joystick = $"../Joystick"
 
 signal died
@@ -22,10 +22,13 @@ var joyStart = Vector2(0,0)
 var joyCurrent = Vector2(0,0)
 var joyPressed = false
 
+var OS_name
+
 func _ready():
 	screensize = get_viewport_rect().size
 	$DashTimer.wait_time = dash_time
 	set_process_input(true)
+	OS_name = OS.get_name()
 
 func _process(delta):
 	joyCurrent = get_global_mouse_position()
@@ -33,7 +36,7 @@ func _process(delta):
 	if !dead:
 		#if !dashing:
 		direction = Vector2(0,0)
-		if OS.get_name() == "Windows" or OS.get_name() == "HTML5" or OS.get_name() == "OSX":
+		if OS_name == "Windows" or OS_name == "HTML5" or OS_name == "OSX":
 			if Input.is_action_pressed("ui_right"):
 				direction.x += 1
 			if Input.is_action_pressed("ui_left"):
@@ -42,7 +45,7 @@ func _process(delta):
 				direction.y += 1
 			if Input.is_action_pressed("ui_up"):
 				direction.y -= 1
-		if OS.get_name() == "Android" or OS.get_name() == "iOS" or OS.get_name() == "OSX":
+		if OS_name == "Android" or OS_name == "iOS":
 			if Input.is_mouse_button_pressed(BUTTON_LEFT):
 				direction = joystick_direction() / 100
 		
@@ -83,17 +86,26 @@ func dash():
 	dashing = true
 	velocity = direction.normalized() * dash_speed
 	$DashTimer.start()
+	$Sounds/DashSound.play()
 	
 func hit(enemy):
-	dead = true
-	hide()
-	emit_signal("died")
+	if (enemy.is_in_group("hazard")):
+		dead = true
+		hide()
+		emit_signal("died")
 
 func _on_ShotTimer_timeout():
 	if !dead and !dashing:
 		var bullet = Bullet.instance()
-		$"/root/Main".add_child(bullet)
+		$"..".add_child(bullet)
 		bullet.init(position)
 
 func _on_DashTimer_timeout():
 	dashing = false
+
+# This terrible function is a result of my terrible code
+func _on_Player_area_entered( area ):
+	if area.is_in_group("outside_area"):
+		var boss = area.get_parent().get_parent()
+		if !boss.spawning and !boss.died:
+			hit(area)

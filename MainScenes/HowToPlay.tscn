@@ -1,0 +1,127 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Scripts/HowToPlay.gd" type="Script" id=1]
+[ext_resource path="res://assets/pixel.png" type="Texture" id=2]
+[ext_resource path="res://assets/AldotheApache.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Bullet.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Pivot.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Joystick.tscn" type="PackedScene" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+
+size = 36
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 3 )
+_sections_unfolded = [ "Font", "Resource", "Settings" ]
+
+[sub_resource type="DynamicFont" id=3]
+
+size = 48
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 3 )
+_sections_unfolded = [ "Font", "Resource", "Settings" ]
+
+[node name="HowToPlay" type="Node"]
+
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Background" type="Sprite" parent="." index="0"]
+
+modulate = Color( 0.423529, 0.678431, 0.921569, 1 )
+scale = Vector2( 1024, 576 )
+texture = ExtResource( 2 )
+centered = false
+_sections_unfolded = [ "Transform", "Visibility" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="GUI" type="Control" parent="." index="1"]
+
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -512.0
+margin_top = -576.0
+margin_right = 512.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin" ]
+
+[node name="Instructions" type="Label" parent="GUI" index="0"]
+
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -206.0
+margin_top = -218.0
+margin_right = 207.0
+margin_bottom = 119.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.27451, 0.576471, 0.87451, 1 )
+text = "MOVE WITH ARROW KEYS AND DASH IN YOUR CURRENT DIRECTION WITH SPACE
+
+YOU ALWAYS SHOOT THROUGH THE CENTER PIVOT POINT
+
+DODGE PAST ENEMIES AND HERD THEM INTO YOUR BULLET STREAM"
+align = 1
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Visibility", "custom_colors", "custom_fonts" ]
+
+[node name="ToMenu" type="Button" parent="GUI" index="1"]
+
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -136.0
+margin_top = -82.0
+margin_right = 135.0
+margin_bottom = -35.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 3 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Back to Menu"
+flat = true
+align = 1
+_sections_unfolded = [ "Size Flags", "Theme", "custom_colors", "custom_constants", "custom_fonts" ]
+
+[node name="Player" parent="." index="2" instance=ExtResource( 4 )]
+
+position = Vector2( 777.308, 185.832 )
+Bullet = ExtResource( 5 )
+
+[node name="Pivot" parent="." index="3" instance=ExtResource( 6 )]
+
+position = Vector2( 512, 288 )
+
+[node name="Joystick" parent="." index="4" instance=ExtResource( 7 )]
+
+[connection signal="pressed" from="GUI/ToMenu" to="." method="_on_ToMenu_pressed"]
+
+

@@ -1,0 +1,92 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scenes/Entity.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/ShootBoss.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Laser.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/pixel.png" type="Texture" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[node name="ShootBoss" groups=[
+"enemies",
+"bosses",
+"shoot_boss",
+] instance=ExtResource( 1 )]
+
+position = Vector2( 0, -115 )
+scale = Vector2( 5, 5 )
+script = ExtResource( 2 )
+max_health = 300
+points = 10
+Laser = ExtResource( 3 )
+
+[node name="Sprite" parent="." index="1"]
+
+modulate = Color( 0, 0.211765, 0.494118, 1 )
+_sections_unfolded = [ "Material", "Offset", "Region", "Transform", "Visibility", "Z Index" ]
+
+[node name="NozzleShape" type="CollisionShape2D" parent="." index="2"]
+
+position = Vector2( -0.031945, 36.0136 )
+scale = Vector2( 2.68443, 0.401281 )
+shape = SubResource( 1 )
+
+[node name="Nozzle" type="Sprite" parent="." index="3"]
+
+modulate = Color( 0, 0.211765, 0.494118, 1 )
+position = Vector2( 0, 8 )
+scale = Vector2( 54, 64 )
+texture = ExtResource( 4 )
+_sections_unfolded = [ "Offset", "Transform", "Visibility", "Z Index" ]
+
+[node name="AttackTimer" type="Timer" parent="." index="4"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
+
+[node name="BlinkTimer" type="Timer" parent="." index="5"]
+
+process_mode = 1
+wait_time = 0.1
+one_shot = false
+autostart = false
+
+[node name="SpawnTimer" type="Timer" parent="." index="6"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
+
+[node name="CooldownTimer" type="Timer" parent="." index="7"]
+
+process_mode = 1
+wait_time = 0.3
+one_shot = true
+autostart = false
+
+[node name="ShootingTimer" type="Timer" parent="." index="8"]
+
+process_mode = 1
+wait_time = 0.2
+one_shot = true
+autostart = false
+
+[connection signal="area_entered" from="." to="." method="_on_ShootBoss_area_entered"]
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_AttackTimer_timeout"]
+
+[connection signal="timeout" from="BlinkTimer" to="." method="_on_BlinkTimer_timeout"]
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
+
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_CooldownTimer_timeout"]
+
+[connection signal="timeout" from="ShootingTimer" to="." method="_on_ShootingTimer_timeout"]
+
+

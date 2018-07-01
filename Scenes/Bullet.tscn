@@ -41,6 +41,8 @@ _sections_unfolded = [ "Transform", "Z Index" ]
 
 rect = Rect2( -10, -10, 20, 20 )
 
+[connection signal="area_entered" from="." to="." method="_on_Bullet_area_entered"]
+
 [connection signal="screen_exited" from="Visibility" to="." method="_on_Visibility_screen_exited"]
 
 

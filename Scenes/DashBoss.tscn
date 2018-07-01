@@ -4,7 +4,10 @@
 [ext_resource path="res://Scripts/DashBoss.gd" type="Script" id=2]
 
 [node name="DashBoss" groups=[
+"enemies",
+"hazard",
 "bosses",
+"dash_boss",
 ] instance=ExtResource( 1 )]
 
 scale = Vector2( 3, 3 )

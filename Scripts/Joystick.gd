@@ -21,9 +21,11 @@ func _process(delta):
 		$Stick.rotation = difference.angle()
 
 func activate(pos):
-	position = pos
-	active = true
-	show()
+	var OS_name = OS.get_name()
+	if OS_name == "Android" or OS_name == "iOS":
+		position = pos
+		active = true
+		show()
 
 func deactivate():
 	active = false

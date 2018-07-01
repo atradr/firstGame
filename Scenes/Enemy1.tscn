@@ -5,11 +5,12 @@
 
 [node name="Enemy1" groups=[
 "enemies",
+"hazard",
 ] instance=ExtResource( 1 )]
 
 z_index = 1
 script = ExtResource( 2 )
-_sections_unfolded = [ "Visibility", "Z Index" ]
+_sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 speed = 300
 health = 12
 scale_decrease = Vector2( 0.05, 0.05 )

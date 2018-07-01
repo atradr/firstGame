@@ -39,7 +39,7 @@ func _process(delta):
 		if fleeing:
 			velocity = -velocity
 		rotation = atan2(player.position.x - position.x, position.y - player.position.y)
-	position += velocity * delta * .9
+	position += velocity * delta
 
 func init():
 	var x = rand_range(0, screen_width)
@@ -59,6 +59,6 @@ func _on_Enemy1_area_entered( area ):
 		if area.is_in_group("bullets"):
 			health -= 1
 			scale -= scale_decrease
-			#area.queue_free()
+			area.hit(self)
 		if area.get_name() == "Player":
 			area.hit(self)

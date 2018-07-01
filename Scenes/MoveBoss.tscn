@@ -1,0 +1,652 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Scripts/MoveBoss.gd" type="Script" id=1]
+[ext_resource path="res://assets/pixel.png" type="Texture" id=2]
+[ext_resource path="res://animations/OutsideSprites.tres" type="Animation" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 0.5, 0.5 )
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 0.5, 0.5 )
+
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 0.5, 0.5 )
+
+[sub_resource type="RectangleShape2D" id=5]
+
+custom_solver_bias = 0.0
+extents = Vector2( 0.5, 0.5 )
+
+[sub_resource type="RectangleShape2D" id=6]
+
+custom_solver_bias = 0.0
+extents = Vector2( 0.5, 0.5 )
+
+[sub_resource type="RectangleShape2D" id=7]
+
+custom_solver_bias = 0.0
+extents = Vector2( 0.5, 0.5 )
+
+[sub_resource type="RectangleShape2D" id=8]
+
+custom_solver_bias = 0.0
+extents = Vector2( 0.5, 0.5 )
+
+[sub_resource type="RectangleShape2D" id=9]
+
+custom_solver_bias = 0.0
+extents = Vector2( 0.5, 0.5 )
+
+[sub_resource type="Animation" id=10]
+
+resource_name = "AttackAnim"
+length = 4.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("OutsideSegments/Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5, 3 ),
+"transitions": PoolRealArray( 0.527985, 1.79197, 1.91847 ),
+"update": 0,
+"values": [ Vector2( -20, -20 ), Vector2( -120, -120 ), Vector2( -20, -20 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("OutsideSegments/Sprite2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.5, 3 ),
+"transitions": PoolRealArray( 0.527985, 1.79197, 1.91847 ),
+"update": 0,
+"values": [ Vector2( 0, -20 ), Vector2( 0, -120 ), Vector2( 0, -20 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("OutsideSegments/Sprite3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.5, 3 ),
+"transitions": PoolRealArray( 0.527985, 1.79197, 1.91847 ),
+"update": 0,
+"values": [ Vector2( 20, -20 ), Vector2( 120, -120 ), Vector2( 20, -20 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("OutsideSegments/Sprite4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.5, 3 ),
+"transitions": PoolRealArray( 0.527985, 1.79197, 1.91847 ),
+"update": 0,
+"values": [ Vector2( 20, 0 ), Vector2( 120, 0 ), Vector2( 20, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("OutsideSegments/Sprite5:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1.5, 3 ),
+"transitions": PoolRealArray( 0.527985, 1.79197, 1.91847 ),
+"update": 0,
+"values": [ Vector2( 20, 20 ), Vector2( 120, 120 ), Vector2( 20, 20 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("OutsideSegments/Sprite6:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1.5, 3 ),
+"transitions": PoolRealArray( 0.527985, 1.79197, 1.91847 ),
+"update": 0,
+"values": [ Vector2( 0, 20 ), Vector2( 0, 120 ), Vector2( 0, 20 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("OutsideSegments/Sprite7:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 1.5, 3 ),
+"transitions": PoolRealArray( 0.527985, 1.79197, 1.91847 ),
+"update": 0,
+"values": [ Vector2( -20, 20 ), Vector2( -120, 120 ), Vector2( -20, 20 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("OutsideSegments/Sprite8:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 1.5, 3 ),
+"transitions": PoolRealArray( 0.527985, 1.79197, 1.91847 ),
+"update": 0,
+"values": [ Vector2( -20, 0 ), Vector2( -120, 0 ), Vector2( -20, 0 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+
+length = 4.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("OutsideSegments/Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 0.527985, 1.79197, 1.91847 ),
+"update": 0,
+"values": [ Vector2( -20, -20 ), Vector2( -26, -26 ), Vector2( -20, -20 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("OutsideSegments/Sprite2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 0.527985, 1.79197, 1.91847 ),
+"update": 0,
+"values": [ Vector2( 0, -20 ), Vector2( 0, -26 ), Vector2( 0, -20 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("OutsideSegments/Sprite3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 0.527985, 1.79197, 1.91847 ),
+"update": 0,
+"values": [ Vector2( 20, -20 ), Vector2( 26, -26 ), Vector2( 20, -20 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("OutsideSegments/Sprite4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 0.527985, 1.79197, 1.91847 ),
+"update": 0,
+"values": [ Vector2( 20, 0 ), Vector2( 26, 0 ), Vector2( 20, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("OutsideSegments/Sprite5:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 0.527985, 1.79197, 1.91847 ),
+"update": 0,
+"values": [ Vector2( 20, 20 ), Vector2( 26, 26 ), Vector2( 20, 20 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("OutsideSegments/Sprite6:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 0.527985, 1.79197, 1.91847 ),
+"update": 0,
+"values": [ Vector2( 0, 20 ), Vector2( 0, 26 ), Vector2( 0, 20 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("OutsideSegments/Sprite7:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 0.527985, 1.79197, 1.91847 ),
+"update": 0,
+"values": [ Vector2( -20, 20 ), Vector2( -26, 26 ), Vector2( -20, 20 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("OutsideSegments/Sprite8:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 0.527985, 1.79197, 1.91847 ),
+"update": 0,
+"values": [ Vector2( -20, 0 ), Vector2( -26, 0 ), Vector2( -20, 0 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+
+resource_name = "SpawnAnim"
+length = 2.5
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("OutsideSegments/Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5, 2.5 ),
+"transitions": PoolRealArray( 1.79197, 0.25, 1.91847 ),
+"update": 0,
+"values": [ Vector2( -300, -300 ), Vector2( -300, -300 ), Vector2( -20, -20 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("OutsideSegments/Sprite2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.5, 2.5 ),
+"transitions": PoolRealArray( 1.79197, 0.25, 1.91847 ),
+"update": 0,
+"values": [ Vector2( 0, -300 ), Vector2( 0, -300 ), Vector2( 0, -20 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("OutsideSegments/Sprite3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.5, 2.5 ),
+"transitions": PoolRealArray( 1.79197, 0.25, 1.91847 ),
+"update": 0,
+"values": [ Vector2( 300, -300 ), Vector2( 300, -300 ), Vector2( 20, -20 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("OutsideSegments/Sprite4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.5, 2.5 ),
+"transitions": PoolRealArray( 1.79197, 0.25, 1.91847 ),
+"update": 0,
+"values": [ Vector2( 300, 0 ), Vector2( 300, 0 ), Vector2( 20, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("OutsideSegments/Sprite5:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1.5, 2.5 ),
+"transitions": PoolRealArray( 1.79197, 0.25, 1.91847 ),
+"update": 0,
+"values": [ Vector2( 300, 300 ), Vector2( 300, 300 ), Vector2( 20, 20 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("OutsideSegments/Sprite6:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1.5, 2.5 ),
+"transitions": PoolRealArray( 1.79197, 0.25, 1.91847 ),
+"update": 0,
+"values": [ Vector2( 0, 300 ), Vector2( 0, 300 ), Vector2( 0, 20 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("OutsideSegments/Sprite7:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 1.5, 2.5 ),
+"transitions": PoolRealArray( 1.79197, 0.25, 1.91847 ),
+"update": 0,
+"values": [ Vector2( -300, 300 ), Vector2( -300, 300 ), Vector2( -20, 20 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("OutsideSegments/Sprite8:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 1.5, 2.5 ),
+"transitions": PoolRealArray( 1.79197, 0.25, 1.91847 ),
+"update": 0,
+"values": [ Vector2( -300, 0 ), Vector2( -300, 0 ), Vector2( -20, 0 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Sprite:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 0.451899, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 20, 20 ) ]
+}
+
+[node name="MoveBoss" type="Area2D" groups=[
+"hazard",
+"bosses",
+"move_boss",
+]]
+
+modulate = Color( 0, 0.215686, 0.498039, 1 )
+scale = Vector2( 3, 3 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+max_health = 300
+points = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="." index="1"]
+
+scale = Vector2( 20, 20 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Offset", "Transform", "Visibility", "Z Index" ]
+
+[node name="OutsideSegments" type="Node2D" parent="." index="2"]
+
+editor/display_folded = true
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Area2D" parent="OutsideSegments" index="0" groups=[
+"outside_area",
+"hazard",
+]]
+
+position = Vector2( -20, -20 )
+scale = Vector2( 20, 20 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="OutsideSegments/Sprite" index="0"]
+
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Offset", "Visibility" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OutsideSegments/Sprite" index="1"]
+
+shape = SubResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite2" type="Area2D" parent="OutsideSegments" index="1" groups=[
+"outside_area",
+"hazard",
+]]
+
+position = Vector2( 0, -20 )
+scale = Vector2( 20, 20 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="OutsideSegments/Sprite2" index="0"]
+
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OutsideSegments/Sprite2" index="1"]
+
+shape = SubResource( 3 )
+
+[node name="Sprite3" type="Area2D" parent="OutsideSegments" index="2" groups=[
+"outside_area",
+"hazard",
+]]
+
+position = Vector2( 20, -20 )
+scale = Vector2( 20, 20 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="OutsideSegments/Sprite3" index="0"]
+
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OutsideSegments/Sprite3" index="1"]
+
+shape = SubResource( 4 )
+
+[node name="Sprite4" type="Area2D" parent="OutsideSegments" index="3" groups=[
+"outside_area",
+"hazard",
+]]
+
+position = Vector2( 20, 0 )
+scale = Vector2( 20, 20 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="OutsideSegments/Sprite4" index="0"]
+
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OutsideSegments/Sprite4" index="1"]
+
+shape = SubResource( 5 )
+
+[node name="Sprite5" type="Area2D" parent="OutsideSegments" index="4" groups=[
+"outside_area",
+"hazard",
+]]
+
+position = Vector2( 20, 20 )
+scale = Vector2( 20, 20 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Offset", "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="OutsideSegments/Sprite5" index="0"]
+
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OutsideSegments/Sprite5" index="1"]
+
+shape = SubResource( 6 )
+
+[node name="Sprite6" type="Area2D" parent="OutsideSegments" index="5" groups=[
+"outside_area",
+"hazard",
+]]
+
+position = Vector2( 0, 20 )
+scale = Vector2( 20, 20 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="OutsideSegments/Sprite6" index="0"]
+
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OutsideSegments/Sprite6" index="1"]
+
+shape = SubResource( 7 )
+
+[node name="Sprite7" type="Area2D" parent="OutsideSegments" index="6" groups=[
+"outside_area",
+"hazard",
+]]
+
+position = Vector2( -20, 20 )
+scale = Vector2( 20, 20 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="OutsideSegments/Sprite7" index="0"]
+
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OutsideSegments/Sprite7" index="1"]
+
+shape = SubResource( 8 )
+
+[node name="Sprite8" type="Area2D" parent="OutsideSegments" index="7" groups=[
+"outside_area",
+"hazard",
+]]
+
+position = Vector2( -20, 0 )
+scale = Vector2( 20, 20 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="OutsideSegments/Sprite8" index="0"]
+
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OutsideSegments/Sprite8" index="1"]
+
+shape = SubResource( 9 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+
+root_node = NodePath("..")
+autoplay = "SpawnAnim"
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/AttackAnim = SubResource( 10 )
+anims/ExpandAnim = SubResource( 11 )
+anims/OutsideSprites = ExtResource( 3 )
+anims/SpawnAnim = SubResource( 12 )
+blend_times = [  ]
+
+[node name="CooldownTimer" type="Timer" parent="." index="4"]
+
+process_mode = 1
+wait_time = 0.5
+one_shot = true
+autostart = false
+
+[node name="AttackTimer" type="Timer" parent="." index="5"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
+
+[node name="BlinkTimer" type="Timer" parent="." index="6"]
+
+process_mode = 1
+wait_time = 0.1
+one_shot = false
+autostart = false
+
+[node name="SpawnTimer" type="Timer" parent="." index="7"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
+
+[connection signal="area_entered" from="." to="." method="_on_MoveBoss_area_entered"]
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_CooldownTimer_timeout"]
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_AttackTimer_timeout"]
+
+[connection signal="timeout" from="BlinkTimer" to="." method="_on_BlinkTimer_timeout"]
+
+

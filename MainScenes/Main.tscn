@@ -1,27 +1,29 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Scripts/Main.gd" type="Script" id=1]
-[ext_resource path="res://assets/pixel.png" type="Texture" id=2]
-[ext_resource path="res://Scenes/BossHealthBar.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/FORCED SQUARE.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://assets/AldotheApache.ttf" type="DynamicFontData" id=5]
-[ext_resource path="res://Scenes/Pivot.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Scenes/Bullet.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Scripts/SpawnManager.gd" type="Script" id=9]
-[ext_resource path="res://Spawners/BasicSpawner.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Scenes/Enemy1.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Scenes/Enemy2.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Scenes/DashBoss.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Scripts/Camera.gd" type="Script" id=14]
-[ext_resource path="res://Scenes/Joystick.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Scenes/ShootBoss.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/MoveBoss.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/pixel.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/BossHealthBar.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/FORCED SQUARE.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://assets/AldotheApache.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://Scenes/Pivot.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/Bullet.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scripts/SpawnManager.gd" type="Script" id=11]
+[ext_resource path="res://Spawners/BasicSpawner.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scenes/Enemy1.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Scenes/Enemy2.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Scenes/DashBoss.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Scripts/Camera.gd" type="Script" id=16]
+[ext_resource path="res://Scenes/Joystick.tscn" type="PackedScene" id=17]
 
 [sub_resource type="DynamicFont" id=1]
 
 size = 194
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 4 )
+font_data = ExtResource( 6 )
 _sections_unfolded = [ "Font", "Resource", "Settings" ]
 
 [sub_resource type="DynamicFont" id=2]
@@ -29,15 +31,15 @@ _sections_unfolded = [ "Font", "Resource", "Settings" ]
 size = 80
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 4 )
+font_data = ExtResource( 6 )
 _sections_unfolded = [ "Font", "Resource", "Settings" ]
 
 [sub_resource type="DynamicFont" id=3]
 
-size = 128
+size = 64
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 5 )
+font_data = ExtResource( 7 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=4]
@@ -45,12 +47,21 @@ _sections_unfolded = [ "Font", "Settings" ]
 size = 128
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 5 )
+font_data = ExtResource( 7 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
 
 [node name="Main" type="Node" index="0"]
 
 script = ExtResource( 1 )
+shootBoss = ExtResource( 2 )
+moveBoss = ExtResource( 3 )
 
 [node name="BackgroundImage" type="Sprite" parent="." index="0"]
 
@@ -58,14 +69,14 @@ modulate = Color( 0.423529, 0.678431, 0.921569, 1 )
 position = Vector2( -78.1886, -43.1211 )
 scale = Vector2( 1183.28, 666.474 )
 z_index = -4096
-texture = ExtResource( 2 )
+texture = ExtResource( 4 )
 centered = false
 _sections_unfolded = [ "Offset", "Transform", "Visibility", "Z Index" ]
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="BossHealthBar" parent="." index="1" instance=ExtResource( 3 )]
+[node name="BossHealthBar" parent="." index="1" instance=ExtResource( 5 )]
 
 visible = false
 position = Vector2( 512, 288 )
@@ -82,9 +93,6 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 _sections_unfolded = [ "Focus", "Hint", "Material", "Rect", "Visibility" ]
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="CenterText" type="Label" parent="GUI" index="0"]
 
@@ -102,7 +110,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0.643137, 0.576471, 0.878431, 1 )
+custom_colors/font_color = Color( 0.27451, 0.576471, 0.878431, 1 )
 text = "0"
 align = 1
 valign = 1
@@ -128,8 +136,6 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0.643137, 0.576471, 0.878431, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "LARGE ENTITY APPROACHING"
 align = 1
 valign = 1
@@ -137,121 +143,140 @@ autowrap = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Visibility", "custom_colors", "custom_fonts" ]
+_sections_unfolded = [ "Visibility", "custom_colors", "custom_constants", "custom_fonts" ]
 
-[node name="DeathGUI" type="MarginContainer" parent="GUI" index="2"]
+[node name="DeathGUI" type="Control" parent="GUI" index="2"]
 
-editor/display_folded = true
 visible = false
 anchor_left = 0.5
 anchor_top = 0.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -284.0
-margin_right = 284.0
+margin_right = 403.0
 rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_constants/margin_top = 100
-_sections_unfolded = [ "Theme", "Visibility", "custom_constants" ]
+_sections_unfolded = [ "Rect", "Size Flags", "Theme", "Visibility", "custom_constants" ]
 
-[node name="VBox" type="VBoxContainer" parent="GUI/DeathGUI" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 8.0
-margin_top = 100.0
-margin_right = 568.0
-margin_bottom = 576.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-custom_constants/separation = 150
-alignment = 0
-_sections_unfolded = [ "custom_constants" ]
-
-[node name="DeathText" type="Label" parent="GUI/DeathGUI/VBox" index="0"]
+[node name="ToMenu" type="Button" parent="GUI/DeathGUI" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 560.0
-margin_bottom = 107.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 3 )
-text = "Score: "
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Hint", "custom_fonts" ]
-
-[node name="PlayAgain" type="Button" parent="GUI/DeathGUI/VBox" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 257.0
-margin_right = 560.0
-margin_bottom = 370.0
+margin_left = 368.0
+margin_top = 52.0
+margin_right = 722.0
+margin_bottom = 112.0
 rect_pivot_offset = Vector2( 0, 0 )
 focus_mode = 2
 mouse_filter = 0
 mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-custom_fonts/font = SubResource( 4 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.27451, 0.576471, 0.87451, 1 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "Play Again"
+text = "TO MAIN MENU"
 flat = true
 align = 1
-_sections_unfolded = [ "Margin", "custom_fonts" ]
+_sections_unfolded = [ "Anchor", "Focus", "Margin", "Mouse", "Rect", "Size Flags", "Visibility", "custom_colors", "custom_constants", "custom_fonts", "custom_styles" ]
 
-[node name="Pivot" parent="." index="3" instance=ExtResource( 6 )]
+[node name="PlayAgain" type="Button" parent="GUI/DeathGUI" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 5.0
+margin_top = 403.0
+margin_right = 583.0
+margin_bottom = 516.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.27451, 0.576471, 0.87451, 1 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "PLAY AGAIN"
+flat = true
+align = 1
+_sections_unfolded = [ "Anchor", "Margin", "Size Flags", "Theme", "custom_colors", "custom_fonts" ]
+
+[node name="PauseButton" type="Button" parent="GUI" index="3"]
+
+pause_mode = 2
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 29.0
+margin_top = 24.0
+margin_right = 81.0
+margin_bottom = 84.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/focus = SubResource( 5 )
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.27451, 0.576471, 0.87451, 1 )
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "II"
+flat = true
+align = 1
+_sections_unfolded = [ "Anchor", "Focus", "Margin", "Material", "Mouse", "Pause", "Rect", "Size Flags", "Visibility", "custom_colors", "custom_constants", "custom_fonts", "custom_styles" ]
+
+[node name="Pivot" parent="." index="3" instance=ExtResource( 8 )]
 
 position = Vector2( 512, 288 )
 scale = Vector2( 0.15, 0.15 )
 
-[node name="Player" parent="." index="4" instance=ExtResource( 7 )]
+[node name="Player" parent="." index="4" instance=ExtResource( 9 )]
 
 position = Vector2( 746.658, 192.824 )
 _sections_unfolded = [ "Audio Bus", "Collision", "Material", "Transform", "Visibility", "Z Index" ]
-Bullet = ExtResource( 8 )
+Bullet = ExtResource( 10 )
 
 [node name="SpawnManager" type="Node" parent="." index="5"]
 
-script = ExtResource( 9 )
+script = ExtResource( 11 )
 
-[node name="BasicSpawner" parent="SpawnManager" index="0" instance=ExtResource( 10 )]
+[node name="BasicSpawner" parent="SpawnManager" index="0" instance=ExtResource( 12 )]
 
-Enemy = ExtResource( 11 )
-spawn_time = 1.0
+Enemy = ExtResource( 13 )
+spawn_time = 1.25
 auto_start = true
 
-[node name="BasicSpawner2" parent="SpawnManager" index="1" instance=ExtResource( 10 )]
+[node name="BasicSpawner2" parent="SpawnManager" index="1" instance=ExtResource( 12 )]
 
-Enemy = ExtResource( 12 )
+Enemy = ExtResource( 14 )
+spawn_time = 3.0
 auto_start = true
 
 [node name="BossSpawner" parent="SpawnManager" index="2" groups=[
 "boss_spawners",
-] instance=ExtResource( 10 )]
+] instance=ExtResource( 12 )]
 
-Enemy = ExtResource( 13 )
+Enemy = ExtResource( 15 )
 one_shot = true
 
 [node name="Camera" type="Camera2D" parent="." index="6"]
@@ -279,9 +304,9 @@ drag_margin_bottom = 0.2
 editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
-script = ExtResource( 14 )
+script = ExtResource( 16 )
 
-[node name="Joystick" parent="." index="7" instance=ExtResource( 15 )]
+[node name="Joystick" parent="." index="7" instance=ExtResource( 17 )]
 
 [node name="BossMessageTimer" type="Timer" parent="." index="8"]
 
@@ -297,7 +322,11 @@ wait_time = 0.35
 one_shot = false
 autostart = false
 
-[connection signal="pressed" from="GUI/DeathGUI/VBox/PlayAgain" to="." method="_on_PlayAgain_pressed"]
+[connection signal="pressed" from="GUI/DeathGUI/ToMenu" to="." method="_on_ToMenu_pressed"]
+
+[connection signal="pressed" from="GUI/DeathGUI/PlayAgain" to="." method="_on_PlayAgain_pressed"]
+
+[connection signal="toggled" from="GUI/PauseButton" to="." method="_on_PauseButton_toggled"]
 
 [connection signal="died" from="Player" to="." method="_on_Player_died"]
 
